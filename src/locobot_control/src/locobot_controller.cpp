@@ -560,7 +560,7 @@ void LoCoBotController::gripperController(const ros::TimerEvent &) {
         // sometime gripper gets stuck.. this part is to overcome that
         if (prev_gripper_load_ == 0) {
           std::unique_lock<std::mutex> lock(dynamixel_mutex_);
-          dxl_wb_->itemWrite(gripper_motor_id, "Goal_PWM", -700, &log);
+          dxl_wb_->itemWrite(gripper_motor_id, "Goal_PWM", GRIPPER_CLOSE_DIRECTION*700, &log);
           usleep(100000);
         }
 
@@ -579,7 +579,7 @@ void LoCoBotController::gripperController(const ros::TimerEvent &) {
         gripper_state_ = -1;
       } else {
         std::unique_lock<std::mutex> lock(dynamixel_mutex_);
-        dxl_wb_->itemWrite(gripper_motor_id, "Goal_PWM", -GRIPPER_PWM, &log);
+        dxl_wb_->itemWrite(gripper_motor_id, "Goal_PWM", GRIPPER_CLOSE_DIRECTION*GRIPPER_PWM, &log);
       }
 
     }
