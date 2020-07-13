@@ -13,18 +13,18 @@ sudo udevadm trigger
 sudo usermod -a -G dialout $USER
 ```
 
-#Build Repository
+# Build Repository
 ```buildoutcfg
 catkin_make
 ```
 
-#Launch Dynamixel
+# Launch Dynamixel
 ```buildoutcfg
 source PATH_TO_REPO/devel/setup.bash
 locobot_control dynamixel_controllers.launch dxl_baud_rate:=BUAD_RATE
 ```
 
-#Update Constants
+# Update Constants
 [Refer to Gripper constants](https://github.com/Dhiraj100892/gripper_control/blob/master/src/locobot_control/include/locobot_control/locobot_controller.h#L69-L73)
 
 # How to use it
